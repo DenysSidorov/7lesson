@@ -51,20 +51,21 @@ module.exports = function (app) {
         res.send("ok", 200);
     });
 
-    app.put('/users', function (req, res) {
-        console.log(req.body.username, req.body.hashedPassword, req.body.salt);
-        var newUser = User({
-            username: req.body.username,
-            hashedPassword: req.body.hashedPassword,
-            salt: req.body.salt
-        });
-        newUser.save(function (err) {
+    app.put('/users/:id', function (req, res) {
+        console.log(req.body.username, req.body.hashedPassword, req.body.salt, req.params.id);
+        User.findById(req.params.id, function(err, user) {
             if (err) throw err;
 
-            console.log('User created!');
+            // change the users location
+            user.username = req.body.username;
+
+            // save the user
+            user.save(function(err) {
+                if (err) throw err;
+                console.log('User successfully updated!');
+                res.send("ok", 200);
+            });
+
         });
-
-        res.send("ok", 200);
     });
-
 }
