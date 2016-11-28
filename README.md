@@ -1,6 +1,6 @@
 Launch server : 
 - cd ../bin/www
-- node www.js
+- node www
 
 
 REST API, nodejs, express, config, session, logs, ejs, CRUD operations, mongoDB(mongoose). 
