@@ -1,0 +1,17 @@
+{
+  "port": 8080,
+  "mongoose": {
+    "uri": "mongodb://localhost/chat",
+    "options": {
+    }
+  },
+  "session": {
+    "secret": "KillerMe",
+    "keys": ["secretPas", "secret"],
+    "cookie": {
+      "path": "/",
+      "httpOnly": true,
+      "maxAge": null
+    }
+  }
+}
