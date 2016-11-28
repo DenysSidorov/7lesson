@@ -68,4 +68,14 @@ module.exports = function (app) {
 
         });
     });
+
+    app.delete('/users/:id', function (req, res) {
+        console.log(req.body.username, req.body.hashedPassword, req.body.salt, req.params.id);
+        User.findOneAndRemove({ username: req.body.username }, function(err) {
+            if (err) throw err;
+
+            // we have deleted the user
+            res.send("ok", 200);
+        });
+    });
 }
